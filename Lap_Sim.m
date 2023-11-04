@@ -72,7 +72,7 @@ LLTD = 51.5; % Front lateral load transfer distribution (%)
 W = 660; % vehicle + driver weight (lbs)
 WDF = 50; % front weight distribution (%)
 cg = 13.2/12; % center of gravity height (ft)
-l = 60.5/12; % wheelbase (ft)
+l = 61; %60.5/12; % wheelbase (ft)
 twf = 46/12; % front track width (ft)
 twr = 44/12; % rear track width (ft)
 
@@ -1559,6 +1559,9 @@ Accel_Score = 95.5*((Tmax_accel/accel_time)-1)/((Tmax_accel/Tmin_accel)-1) + 4.5
 
 Total_Points = Accel_Score+Skidpad_Score+Autocross_Score+Endurance_Score;
 
+disp('Wheelbase: ' + l)
+disp('Total points: ' + Total_points)
+
 results = [time_elapsed' velocity'];
 %xlswrite('logged_data.xlsx',results,'sim_data') 
 %% Section 18: Generate Load Cases
@@ -1585,26 +1588,26 @@ rearF(1,:) = [W*AX_max/2 -(WR/2 +WR*AX_min*cg/l/2)*AX_min 0];
 %% Section 19: Plot Results
 disp('Plotting Results')
 % This is just to make some pretty pictures, feel free to comment this out
-figure
-plot(distance,velocity,'k')
-title('Endurance Simulation Velocity Trace')
-xlabel('Distance Travelled (d) [ft]')
-ylabel('Velocity (V) [ft/s]')
-figure
-plot(distance,acceleration,distance,lateral_accel)
-title('Endurance Simulation Acceleration Traces')
-xlabel('Distance Travelled (d) [ft]')
-ylabel('Acceleration [g]')
-legend('Longitudinal','Lateral')
-figure
-plot(distance_ax,velocity_ax,'k')
-title('Autocross Simulation Velocity Trace')
-xlabel('Distance Travelled (d) [ft]')
-ylabel('Velocity (V) [ft/s]')
-figure
-plot(distance_ax,acceleration_ax,distance_ax,lateral_accel_ax)
-title('Autocross Simulation Acceleration Traces')
-xlabel('Distance Travelled (d) [ft]')
-ylabel('Acceleration [g]')
-legend('Longitudinal','Lateral')
+% figure
+% plot(distance,velocity,'k')
+% title('Endurance Simulation Velocity Trace')
+% xlabel('Distance Travelled (d) [ft]')
+% ylabel('Velocity (V) [ft/s]')
+% figure
+% plot(distance,acceleration,distance,lateral_accel)
+% title('Endurance Simulation Acceleration Traces')
+% xlabel('Distance Travelled (d) [ft]')
+% ylabel('Acceleration [g]')
+% legend('Longitudinal','Lateral')
+% figure
+% plot(distance_ax,velocity_ax,'k')
+% title('Autocross Simulation Velocity Trace')
+% xlabel('Distance Travelled (d) [ft]')
+% ylabel('Velocity (V) [ft/s]')
+% figure
+% plot(distance_ax,acceleration_ax,distance_ax,lateral_accel_ax)
+% title('Autocross Simulation Acceleration Traces')
+% xlabel('Distance Travelled (d) [ft]')
+% ylabel('Acceleration [g]')
+% legend('Longitudinal','Lateral')
 disp('Analysis Complete')
